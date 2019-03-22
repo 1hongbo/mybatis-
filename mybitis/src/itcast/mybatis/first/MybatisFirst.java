@@ -12,28 +12,29 @@ import itcast.mybatis.po.User;
 public class MybatisFirst {
 	@Test
     public void findUserByIdTest() {
-        //ÅäÖÃÎÄ¼ş
+        //é…ç½®æ–‡ä»¶
+	//ä¸
         String source="SqlMapConfig.xml";
         InputStream inputstream=null;
-        //Êı¾İ¿â»á»°
+        //æ•°æ®åº“ä¼šè¯
         SqlSession sqlsession=null;
-        //»á»°¹¤³§
+        //ä¼šè¯å·¥å‚
         SqlSessionFactory sqlsessionfactory=null;
         try {
             inputstream = Resources.getResourceAsStream(source);
-            //´´½¨Ò»¸ö»á»°¹¤³§
+            //åˆ›å»ºä¸€ä¸ªä¼šè¯å·¥å‚
             sqlsessionfactory=new SqlSessionFactoryBuilder().build(inputstream);
-            //ÀûÓÃ»á»°¹¤³§´´½¨Ò»¸ö»á»°
+            //åˆ©ç”¨ä¼šè¯å·¥å‚åˆ›å»ºä¸€ä¸ªä¼šè¯
             sqlsession=sqlsessionfactory.openSession();
-            //²éÑ¯µ¥¸ö¼ÇÂ¼ÓÃselectOne·½·¨
+            //æŸ¥è¯¢å•ä¸ªè®°å½•ç”¨selectOneæ–¹æ³•
             User user=sqlsession.selectOne("test.findUserById", 12);
-            //Êä³ö²úÆ·ĞÅÏ¢
+            //è¾“å‡ºäº§å“ä¿¡æ¯
             System.out.println(user);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }finally{
-            //¹Ø±Õ»á»°
+            //å…³é—­ä¼šè¯
             if(sqlsession!=null){
             sqlsession.close();
             }
